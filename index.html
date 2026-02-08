@@ -11,6 +11,11 @@ max-width:900px;
 margin:auto;
 }
 
+  <header style="display:flex;align-items:center;justify-content:center;gap:10px">
+<div style="background:#d4af37;color:black;padding:6px 10px;border-radius:6px;font-weight:bold">TA</div>
+<div>Tarih Ansiklopedisi</div>
+</header>
+  
 header{
 background:#000000;
 color:#d4af37;
@@ -43,10 +48,7 @@ header{background:#1e3a8a;color:white;padding:18px;text-align:center;font-size:2
 #searchBox{width:100%;padding:14px;font-size:18px;border:none;outline:none}
 .container{padding:20px}
 .person{background:#111;margin:12px 0;padding:18px;border-radius:14px;cursor:pointer;font-size:20px;border:1px solid #d4af37;transition:0.2s;}
-  .person:hover{
-transform:scale(1.02);
-background:#1a1a1a;
-}
+  .person:hover{transform:scale(1.02);background:#1a1a1a;}
 #detailPage{display:none;position:fixed;inset:0;background:white;overflow:auto;padding:30px}
 #closeBtn{background:#444;color:white;border:none;padding:12px 22px;font-size:20px;border-radius:10px;cursor:pointer}
 li{margin-bottom:10px;line-height:1.6}
@@ -133,6 +135,7 @@ renderList(people);
 </script>
 </body>
 </html>
+
 
 
 

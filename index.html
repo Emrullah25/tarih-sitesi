@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarihteki Önemli Kişiler</title>
 <style>
-<style>
-<style>
 .container{
 padding:20px;
 max-width:900px;
@@ -84,6 +82,9 @@ li{margin-bottom:10px;line-height:1.6}
 <header>Tarih Ansiklopedisi</header>
 <div style="padding:20px;text-align:center;background:#0b0b0b; color:#d4af37;">
 <h2>Tarih Ansiklopedisi'ne Hoş Geldin</h2>
+  <input id="searchBox" onkeyup="searchPerson()" placeholder="Kişi ara...">
+
+<div id="list" class="container"></div>
 <p>Bu sitede tarihte iz bırakmış önemli kişileri ve olayları kısa ve anlaşılır şekilde öğrenebilirsin.</p>
 <div style="padding:40px;background:#111;text-align:center;">
   <h2 style="color:#d4af37;">Önemli Kişiler</h2>
@@ -99,6 +100,7 @@ li{margin-bottom:10px;line-height:1.6}
       <h3>Fatih Sultan Mehmet</h3>
       <p>İstanbul'u fetheden Osmanlı padişahıdır.</p>
     </div>
+    
 
     <div style="background:#1a1a1a;padding:20px;width:200px;border-radius:10px;color:white;">
       <h3>Kanuni Sultan Süleyman</h3>
@@ -173,6 +175,7 @@ renderList(people);
 </script>
 </body>
 </html>
+
 
 
 

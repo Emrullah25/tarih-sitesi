@@ -6,20 +6,23 @@
 <title>Tarihteki Önemli Kişiler</title>
 <style>
 <style>
-  .container{
+<style>
+.container{
 padding:20px;
 max-width:900px;
 margin:auto;
 }
 
-  <header style="display:flex;align-items:center;justify-content:center;gap:10px">
-<div style="background:111;color:black;padding:6px 10px;border-radius:6px;font-weight:bold">TA</div>
-<div>Tarih Ansiklopedisi</div>
-</header>
-  
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#111;
+color:#f7f5f5;
+}
+
 header{
 background:#111;
-color:#111;
+color:#d4af37;
 padding:22px;
 text-align:center;
 font-size:32px;
@@ -35,31 +38,45 @@ border:none;
 outline:none;
 background:#111;
 color:#f7f5f5;
-border-bottom:2px solid #f7f5f5;
+border-bottom:2px solid #d4af37;
 }
 
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
+.person{
 background:#111;
-color:#f7f5f5;
+margin:14px 0;
+padding:20px;
+border-radius:14px;
+cursor:pointer;
+font-size:20px;
+border:1px solid rgba(212,175,55,0.4);
+transition:0.25s;
 }
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#111}
-header{background:#1e3a8a;color:white;padding:18px;text-align:center;font-size:28px;font-weight:bold}
-#searchBox{width:100%;padding:14px;font-size:18px;border:none;outline:none}
-.container{padding:20px}
-.person{background:#f2f2f2;margin:12px 0;padding:18px;border-radius:14px;cursor:pointer;font-size:20px;border:1px solid #d4af37;transition:0.2s;}
-  .person:hover{transform:scale(1.02);background:#1a1a1a;}
+
+.person:hover{
+transform:translateY(-3px);
+background:#1a1a1a;
+}
+
 #detailPage{
 display:none;
 position:fixed;
 inset:0;
-background:#dddddd;
+background:#0b0b0b;
 color:#e5e5e5;
 overflow:auto;
 padding:30px
 }
-#closeBtn{background:#f2f2f2;color:white;border:none;padding:12px 22px;font-size:20px;border-radius:10px;cursor:pointer}
+
+#closeBtn{
+background:#d4af37;
+color:black;
+border:none;
+padding:12px 22px;
+font-size:20px;
+border-radius:10px;
+cursor:pointer
+}
+
 li{margin-bottom:10px;line-height:1.6}
 </style>
 </head>
@@ -144,6 +161,7 @@ renderList(people);
 </script>
 </body>
 </html>
+
 
 
 

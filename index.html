@@ -80,12 +80,12 @@ li{margin-bottom:10px;line-height:1.6}
 </head>
 <body>
 <header>Tarih Ansiklopedisi</header>
+  <input id="searchBox" onkeyup="searchPerson()" placeholder="Kişi ara...">
+<div id="list" class="container"></div>
 <div style="padding:20px;text-align:center;background:#0b0b0b; color:#d4af37;">
 <h2>Tarih Ansiklopedisi'ne Hoş Geldin</h2>
-  <input id="searchBox" onkeyup="searchPerson()" placeholder="Kişi ara...">
-
-<div id="list" class="container"></div>
 <p>Bu sitede tarihte iz bırakmış önemli kişileri ve olayları kısa ve anlaşılır şekilde öğrenebilirsin.</p>
+</div>
 <div style="padding:40px;background:#111;text-align:center;">
   <h2 style="color:#d4af37;">Önemli Kişiler</h2>
 
@@ -184,6 +184,7 @@ renderList(people);
 </script>
 </body>
 </html>
+
 
 
 

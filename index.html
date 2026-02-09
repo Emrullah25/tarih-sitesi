@@ -231,11 +231,36 @@ const listDiv = document.getElementById('list');
 function renderList(arr){listDiv.innerHTML='';arr.forEach(p=>{const d=document.createElement('div');d.className='person';d.innerText=p.name;d.onclick=()=>openDetail(p);listDiv.appendChild(d);});}
 function openDetail(p){document.getElementById('detailPage').style.display='block';document.getElementById('detailName').innerText=p.name;const ol=document.getElementById('detailInfo');ol.innerHTML='';p.info.forEach(i=>{const li=document.createElement('li');li.innerText=i;ol.appendChild(li);});}
 function closeDetail(){document.getElementById('detailPage').style.display='none';}
+  let currentCategory = "all";
+
+function filterCategory(cat){
+  currentCategory = cat;
+  applyFilters();
+}
+
+function searchPerson(){
+  applyFilters();
+}
+
+function applyFilters(){
+  const val = document.getElementById('searchBox').value.toLowerCase();
+
+  let result = people;
+
+  if(currentCategory !== "all"){
+    result = result.filter(p => p.category === currentCategory);
+  }
+
+  result = result.filter(p => p.name.toLowerCase().includes(val));
+
+  renderList(result);
+}
 function searchPerson(){const val=document.getElementById('searchBox').value.toLowerCase();const filtered=people.filter(p=>p.name.toLowerCase().includes(val));renderList(filtered);} 
 renderList(people);
 </script>
 </body>
 </html>
+
 
 
 

@@ -255,11 +255,14 @@ function applyFilters(){
 
   renderList(result);
 }
-function searchPerson(){const val=document.getElementById('searchBox').value.toLowerCase();const filtered=people.filter(p=>p.name.toLowerCase().includes(val));renderList(filtered);} 
+function searchPerson(){
+  applyFilters();
+}
 renderList(people);
 </script>
 </body>
 </html>
+
 
 
 

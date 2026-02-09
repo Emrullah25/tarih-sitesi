@@ -4,91 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarihteki Önemli Kişiler</title>
+
 <style>
-.container{
-padding:20px;
-max-width:900px;
-margin:auto;
-}
-
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#111;
-color:#f7f5f5;
-}
-
-header{
-background:#111;
-color:#d4af37;
-padding:22px;
-text-align:center;
-font-size:32px;
-font-weight:bold;
-letter-spacing:1px;
-}
-
-#searchBox{
-width:100%;
-padding:16px;
-font-size:18px;
-border:none;
-outline:none;
-background:#111;
-color:#f7f5f5;
-border-bottom:2px solid #d4af37;
-}
-
-.person{
-background:#111;
-margin:14px 0;
-padding:20px;
-border-radius:14px;
-cursor:pointer;
-font-size:20px;
-border:1px solid rgba(212,175,55,0.4);
-transition:0.25s;
-}
-
-.person:hover{
-transform:translateY(-3px);
-background:#1a1a1a;
-}
-
-#detailPage{
-display:none;
-position:fixed;
-inset:0;
-background:#0b0b0b;
-color:#e5e5e5;
-overflow:auto;
-padding:30px
-}
-
-#closeBtn{
-background:#d4af37;
-color:black;
-border:none;
-padding:12px 22px;
-font-size:20px;
-border-radius:10px;
-cursor:pointer
-}
-
-li{margin-bottom:10px;line-height:1.6}
+.container{padding:20px;max-width:900px;margin:auto;}
+body{margin:0;font-family:Arial;background:#111;color:#f7f5f5;}
+header{background:#111;color:#d4af37;padding:22px;text-align:center;font-size:32px;font-weight:bold;}
+#searchBox{width:100%;padding:16px;font-size:18px;border:none;background:#111;color:white;border-bottom:2px solid #d4af37;}
+.person{background:#111;margin:14px 0;padding:20px;border-radius:14px;cursor:pointer;font-size:20px;border:1px solid rgba(212,175,55,0.4);}
+.person:hover{background:#1a1a1a;}
+#detailPage{display:none;position:fixed;inset:0;background:#0b0b0b;color:#e5e5e5;overflow:auto;padding:30px}
+#closeBtn{background:#d4af37;color:black;border:none;padding:12px 22px;font-size:20px;border-radius:10px;cursor:pointer}
+button{margin:5px;padding:10px 15px;border:none;border-radius:8px;cursor:pointer}
 </style>
 </head>
-<body>
-<header>Tarih Ansiklopedisi</header>
 
-<div style="padding:20px;text-align:center;background:#0b0b0b; color:#d4af37;">
-<h2>Tarih Ansiklopedisi'ne Hoş Geldin</h2>
-<p>Bu sitede tarihte iz bırakmış önemli kişileri ve olayları kısa ve anlaşılır şekilde öğrenebilirsin.</p>
-</div>
+<body>
+
+<header>Tarih Ansiklopedisi</header>
 
 <input id="searchBox" onkeyup="searchPerson()" placeholder="Kişi ara...">
 
-<div style="padding:15px;text-align:center;background:#111;">
+<div style="text-align:center;padding:10px;">
   <button onclick="filterCategory('all')">Tümü</button>
   <button onclick="filterCategory('Osmanlı')">Osmanlı</button>
   <button onclick="filterCategory('Bilim')">Bilim</button>
@@ -98,39 +34,6 @@ li{margin-bottom:10px;line-height:1.6}
 
 <div id="list" class="container"></div>
 
-<div style="padding:40px;background:#111;text-align:center;">
-<h2 style="color:#d4af37;">Önemli Kişiler</h2>
-  <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:30px;">
-
-<div style="background:#1a1a1a;padding:20px;width:200px;border-radius:10px;color:white;text-align:center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Ataturk1930s.jpg" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:10px;">
-  <h3>Mustafa Kemal Atatürk</h3>
-  <p>Türkiye Cumhuriyeti'nin kurucusudur.</p>
-</div>
-
-<div style="background:#1a1a1a;padding:20px;width:200px;border-radius:10px;color:white;text-align:center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Fatih_Sultan_Mehmed_portrait.jpg" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:10px;">
-  <h3>Fatih Sultan Mehmet</h3>
-  <p>İstanbul'u fetheden Osmanlı padişahıdır.</p>
-</div>
-    
-
-    <div style="background:#1a1a1a;padding:20px;width:200px;border-radius:10px;color:white;">
-      <h3>Kanuni Sultan Süleyman</h3>
-      <p>Osmanlı'nın en güçlü döneminin padişahıdır.</p>
-    </div>
-
-  </div>
-</div>
-
-</div>
-
-<nav style="background:#0f172a;padding:10px;text-align:center">
-<a href="#" style="color:white;margin:0 15px;text-decoration:none;font-size:18px">Ana Sayfa</a>
-<a href="#" style="color:white;margin:0 15px;text-decoration:none;font-size:18px">Hakkında</a>
-<a href="#" style="color:white;margin:0 15px;text-decoration:none;font-size:18px">İletişim</a>
-</nav>
-  
 <div id="detailPage">
   <button id="closeBtn" onclick="closeDetail()">Kapat</button>
   <h2 id="detailName"></h2>
@@ -138,100 +41,60 @@ li{margin-bottom:10px;line-height:1.6}
 </div>
 
 <script>
+
 const people = [
-{name:"Fatih Sultan Mehmet",category:"Osmanlı",info:["1453'te İstanbul'un fethiyle Orta Çağ'ın kapanıp Yeni Çağ'ın başlamasına yol açan stratejik bir dönüm noktası oluşturmuştur.","Osmanlı Devleti'ni bölgesel güçten imparatorluk seviyesine taşımıştır.","Merkezi yönetimi güçlendirip devlet kurumlarını yeniden düzenlemiştir.","Bilim, eğitim ve kültürü destekleyerek İstanbul'u küresel bir merkez haline getirmiştir."]},
-{name:"Yavuz Sultan Selim",category:"Osmanlı",info:["Doğu seferleriyle Osmanlı'nın hâkimiyet alanını kısa sürede büyük ölçüde genişletmiştir.","1517'de halifeliğin Osmanlı'ya geçmesiyle İslam dünyasında siyasi-dini liderliği devralmıştır.","Çaldıran zaferiyle Safevî etkisini sınırlamıştır.","Merkezi otoriteyi sert ama etkili politikalarla güçlendirmiştir."]},
-{name:"Kanuni Sultan Süleyman",category:"Osmanlı",info:["Osmanlı'nın Avrupa, Asya ve Afrika'da en geniş sınırlara ulaştığı döneme liderlik etmiştir.","Kanunnamelerle imparatorluk genelinde kalıcı bir hukuk düzeni oluşturmuştur.","Akdeniz ve Orta Avrupa'da askeri ve siyasi üstünlük sağlamıştır.","Uzun ve istikrarlı yönetimiyle devlet yapısını kurumsallaştırmıştır."]},
-{name:"Mustafa Kemal Atatürk",category:"Osmanlı",info:["Kurtuluş Savaşı'nı başarıyla yöneterek ulusal bağımsızlığı sağlamıştır.","Türkiye Cumhuriyeti'ni kurarak monarşiden cumhuriyete geçişi gerçekleştirmiştir.","Hukuk, eğitim ve yönetim alanlarında köklü modernleşme reformları yapmıştır.","Laik ve çağdaş devlet yapısının temel ilkelerini oluşturmuştur."]},
-{name:"Cengiz Han",category:"Osmanlı",info:["Moğol kabilelerini birleştirerek tarihin en geniş kara imparatorluğunun temelini atmıştır.","Hızlı hareket eden disiplinli ordu sistemiyle Avrasya güç dengesini değiştirmiştir.","İpek Yolu güvenliğini artırarak ticaret ağlarını canlandırmıştır.","Meritokrasiye dayalı askeri-idari yapı kurmuştur."]},
-{name:"Büyük İskender",category:"Osmanlı",info:["Pers İmparatorluğu'nu yıkarak Yunan kültürünü Doğu'ya taşıyan Helenistik Çağ'ı başlatmıştır.","Kısa sürede Balkanlar'dan Hindistan'a uzanan büyük bir imparatorluk kurmuştur.","Şehirler kurarak kültürel ve ticari merkezler oluşturmuştur.","Birleşik komuta ve cesur sefer stratejileriyle askeri tarihe yön vermiştir."]},
-{name:"Selahaddin Eyyubi",category:"Osmanlı",info:["1187'de Kudüs'ü geri alarak bölgede güç dengesini değiştirmiştir.","Haçlılara karşı birleşik savunma stratejisi kurmuştur.","Siyasi meşruiyet ve adalet vurgusuyla geniş destek toplamıştır.","Eyyubi Devleti'ni kurarak bölgesel istikrar sağlamıştır."]},
-{name:"Napolyon Bonapart",category:"Osmanlı",info:["Avrupa'da feodal düzeni sarsan savaşlarla kıta siyasetini yeniden şekillendirmiştir.","Napolyon Kanunları ile modern medeni hukuk sistemlerine kalıcı etki yapmıştır.","Merkezi bürokrasi ve liyakat esaslı yükselme modelini yaygınlaştırmıştır.","Kıta çapında ittifak ve koalisyon dengelerini değiştirmiştir."]},
-{name:"Jül Sezar",info:["Galya'nın fethiyle Roma'nın ekonomik ve askeri gücünü artırmıştır.","Cumhuriyet kurumlarını dönüştürerek imparatorluk sürecinin yolunu açmıştır.","Takvim ve yönetim reformlarıyla kalıcı idari düzenlemeler yapmıştır.","Öldürülmesi Roma siyasetinde büyük kırılma yaratmıştır."]},
-{name:"Timur",category:"Osmanlı",info:["Orta Asya merkezli büyük bir imparatorluk kurarak bölgesel güç haritasını değiştirmiştir.","Seferleriyle ticaret yolları ve şehirler üzerinde belirleyici etki kurmuştur.","Ankara Savaşı'yla Anadolu'daki güç dengesini sarsmıştır.","Merkezi otoriteyi sert askeri disiplinle tesis etmiştir."]},
-{name:"Attila",category:"Osmanlı",info:["Hun konfederasyonunu birleştirerek Avrupa'da Roma'ya karşı büyük baskı kurmuştur.","Kıta siyasetinde göç ve ittifak dengelerini etkilemiştir.","Kısa sürede geniş nüfuz alanı oluşturmuştur.","Diplomasi ve güç dengesini birlikte kullanmıştır."]},
-{name:"II. Abdülhamid",category:"Osmanlı",info:["Merkezi yönetimi güçlendirmeye yönelik istihbarat ve idari ağlar kurmuştur.","Hicaz Demiryolu gibi projelerle ulaşım ve bütünleşmeyi artırmıştır.","Eğitim kurumlarını yaygınlaştırarak bürokratik kapasiteyi geliştirmiştir.","Zor uluslararası dengelerde devleti ayakta tutmaya odaklanmıştır."]},
-{name:"Osman Gazi",category:"Osmanlı",info:["Osmanlı Beyliği'ni kurarak kalıcı bir hanedan ve devlet geleneği başlatmıştır.","Sınır uçlarında fetih politikasıyla büyüme zemini oluşturmuştur.","Gaza ve iskân politikalarıyla bölgesel hâkimiyet kurmuştur.","Kurumsallaşmanın temelini atan liderlik sergilemiştir."]},
-{name:"Orhan Gazi",category:"Osmanlı",info:["Bursa'nın alınmasıyla kalıcı başkent ve ekonomik merkez oluşturmuştur.","İlk düzenli askeri ve idari yapıları kurumsallaştırmıştır.","Para bastırarak egemenlik göstergesi oluşturmuştur.","Rumeli'ye geçişle stratejik genişleme başlatmıştır."]},
-{name:"I. Murad",category:"Osmanlı",info:["Kosova zaferiyle Balkanlar'da Osmanlı üstünlüğünü pekiştirmiştir.","Tımar ve kapıkulu düzenini geliştirerek askeri-idari sistemi güçlendirmiştir.","Edirne'yi başkent yaparak Avrupa siyasetinde kalıcı varlık kurmuştur.","Merkezi otoriteyi kurumsallaştırmıştır."]},
-{name:"Yıldırım Bayezid",category:"Osmanlı",info:["Niğbolu zaferiyle Avrupa koalisyonuna karşı üstünlük sağlamıştır.","Anadolu'da siyasi birliği büyük ölçüde toplamıştır.","Hızlı sefer kabiliyetiyle askeri etkinlik kurmuştur.","İstanbul'u kuşatarak Bizans üzerindeki baskıyı artırmıştır."]},
-{name:"Barbaros Hayreddin Paşa",info:["Preveze zaferiyle Akdeniz'de Osmanlı deniz üstünlüğünü kurmuştur.","Donanmayı kurumsal ve sürekli bir güç haline getirmiştir.","Deniz ticaret yollarının güvenliğini sağlamıştır.","Kaptan-ı Derya olarak deniz stratejisini şekillendirmiştir."]},
-{name:"Turgut Reis",category:"Osmanlı",info:["Akdeniz'de kritik üsler kazanarak deniz hâkimiyetini genişletmiştir.","Kıyı ve ada operasyonlarında etkili stratejiler uygulamıştır.","Trablusgarp'ın alınmasında rol oynamıştır.","Osmanlı deniz gücünün sürekliliğine katkı sağlamıştır."]},
-{name:"Piri Reis",category:"Osmanlı",info:["Erken dönem dünya haritalarıyla coğrafi bilginin gelişimine katkı vermiştir.","Kitab-ı Bahriye ile denizcilik bilgisini sistemleştirmiştir.","Deniz rotaları ve limanlar hakkında ayrıntılı veriler sunmuştur.","Osmanlı deniz stratejisine bilgi altyapısı sağlamıştır."]},
-{name:"Mimar Sinan",info:["Klasik Osmanlı mimarisinin zirve eserleriyle şehir siluetini kalıcı biçimde etkilemiştir.","Büyük ölçekli külliyelerle sosyal hizmet altyapısı kurmuştur.","Mühendislik ve estetiği birleştiren yapısal çözümler geliştirmiştir.","Yüzlerce eserle kurumsal mimari geleneği oluşturmuştur."]},
-{name:"Ali Kuşçu",info:["Astronomi ve matematikte yaptığı çalışmalarla bilimsel eğitimi güçlendirmiştir.","Medreselerde müfredatın bilim temelli gelişimine katkı sağlamıştır.","Gözlemsel verilerin kullanımını yaygınlaştırmıştır.","Bilimsel otoriteyi kurumsal yapıya taşımıştır."]},
-{name:"İbn Sina",info:["Tıp bilgisini sistemleştiren eserleri yüzyıllarca temel başvuru olmuştur.","Klinik gözlem ve teşhis yöntemlerini geliştirmiştir.","Felsefe ve bilim arasında bütüncül yaklaşım kurmuştur.","Eğitim kurumlarında standart metinler oluşturmuştur."]},
-{name:"El Cezeri",info:["Otomasyon ve mekanik düzeneklerle erken mühendislik örnekleri geliştirmiştir.","Su ve zaman ölçüm sistemleri tasarlamıştır.","Mekanik tasarım prensiplerini yazılı hale getirmiştir.","Teknoloji tarihinde öncü kabul edilir."]},
-{name:"Farabi",info:["Mantık ve siyaset felsefesinde sistematik eserler vermiştir.","Erdemli toplum ve yönetim teorileri geliştirmiştir.","Bilgi sınıflandırmasıyla eğitim düşüncesine katkı sağlamıştır.","İslam felsefesinde kurucu figürlerdendir."]},
-{name:"Sokrates",info:["Sorgulayıcı diyalog yöntemiyle eleştirel düşünmenin temelini atmıştır.","Ahlak felsefesini bireysel erdem odağına taşımıştır.","Öğrencileri üzerinden kalıcı entelektüel etki bırakmıştır.","Yargılanması düşünce özgürlüğü tartışmalarında simge olmuştur."]},
-{name:"Platon",info:["Akademia ile kurumsal felsefe eğitimini başlatmıştır.","İdeal devlet kuramıyla siyaset felsefesine yön vermiştir.","Bilgi kuramı ve metafizikte temel metinler üretmiştir.","Batı düşüncesinin ana damarını etkilemiştir."]},
-{name:"Aristoteles",info:["Mantık sistematiğiyle bilimsel akıl yürütmenin temelini atmıştır.","Biyoloji, etik ve siyaset dahil çok sayıda alanda çerçeve kurmuştur.","Gözlem ve sınıflandırma yöntemlerini yaygınlaştırmıştır.","Yüzyıllarca eğitim programlarını etkilemiştir."]},
-{name:"Leonardo da Vinci",info:["Sanat ve bilimi birleştiren çalışmalarla Rönesans düşüncesini somutlaştırmıştır.","Anatomi ve mühendislik çizimleriyle bilimsel gözlemi ilerletmiştir.","Yenilikçi tasarımlarla teknoloji hayal gücünü genişletmiştir.","Çok disiplinli üretim modeli oluşturmuştur."]},
-{name:"Michelangelo",info:["Anıtsal eserleriyle Rönesans sanatında estetik standardı yükseltmiştir.","Heykel ve fresklerde insan anatomisini ustalıkla yansıtmıştır.","Büyük kamu yapılarında kalıcı kültürel miras bırakmıştır.","Sanatın toplumsal prestijini artırmıştır."]},
-{name:"Galileo Galilei",info:["Teleskop gözlemleriyle gökbilimde paradigma değişimine katkı sağlamıştır.","Deney ve matematiği birleştiren bilimsel yöntemi güçlendirmiştir.","Güneş merkezli modeli savunarak bilimsel tartışmayı derinleştirmiştir.","Modern fiziğin öncülerindendir."]},
-{name:"Isaac Newton",info:["Hareket ve evrensel çekim yasalarıyla klasik fiziğin temelini kurmuştur.","Kalkülüsün gelişimine öncülük etmiştir.","Optik çalışmalarıyla ışığın doğasını açıklamıştır.","Bilimde matematiksel modellemenin gücünü göstermiştir."]},
-{name:"Albert Einstein",info:["Görelilik kuramıyla uzay-zaman ve enerji anlayışını dönüştürmüştür.","Modern fiziğin kavramsal çerçevesini genişletmiştir.","Bilimsel düşüncede devrim niteliğinde etkiler oluşturmuştur.","Bilimin toplumsal görünürlüğünü artırmıştır."]},
-{name:"Nikola Tesla",info:["Alternatif akım sistemleriyle elektrik iletiminde standart oluşturmuştur.","Yüksek frekans ve kablosuz enerji üzerine öncü çalışmalar yapmıştır.","Elektrik mühendisliğinde altyapı teknolojilerini geliştirmiştir.","Yenilikçi mucit profiliyle teknoloji kültürünü etkilemiştir."]},
-{name:"Thomas Edison",info:["Endüstriyel araştırma laboratuvarı modelini yaygınlaştırmıştır.","Elektrik dağıtım ve aydınlatma sistemlerinin ticarileşmesini hızlandırmıştır.","Çok sayıda patentle seri inovasyon yaklaşımı kurmuştur.","Kitle pazarına yönelik teknolojileri ölçeklendirmiştir."]},
-{name:"Wright Kardeşler",info:["Kontrollü ve sürekli uçuşu mümkün kılan uçak tasarımını gerçekleştirmiştir.","Havacılık mühendisliğinde kontrol yüzeyleri standardını oluşturmuştur.","Ulaşım ve savaş teknolojilerinde yeni bir çağ başlatmıştır.","Deneysel prototipleme yöntemlerini kullanmıştır."]},
-{name:"Marco Polo",info:["Asya ile Avrupa arasında ticari ve kültürel bilgi akışını artırmıştır.","Seyahat anlatılarıyla coğrafi farkındalığı genişletmiştir.","Ticaret yollarının önemini görünür kılmıştır.","Keşifler Çağı'na zihinsel zemin hazırlamıştır."]},
-{name:"Kristof Kolomb",info:["Atlantik ötesi seferlerle Amerika kıtasının Avrupa tarafından tanınmasını sağlamıştır.","Küresel ticaret ağlarının yönünü değiştirmiştir.","Sömürgecilik ve keşif rekabetini hızlandırmıştır.","Denizcilik risk yönetimini dönüştürmüştür."]},
-{name:"Vasco da Gama",info:["Ümit Burnu üzerinden Hindistan deniz yolunu açarak ticaret rotalarını değiştirmiştir.","Baharat ticaretinde deniz hakimiyetini güçlendirmiştir.","Küresel ekonomik dengeleri etkilemiştir.","Uzun menzilli sefer planlamasını geliştirmiştir."]},
-{name:"Macellan",info:["Dünya çevresini dolaşan seferle küresel coğrafyanın bütünlüğünü kanıtlamıştır.","Okyanus geçişlerinde yeni rotalar açmıştır.","Küresel haritacılığa veri sağlamıştır.","Uzun süreli deniz seferi lojistiğini ilerletmiştir."]},
-{name:"Sun Tzu",info:["Savaş Sanatı ile strateji, istihbarat ve lojistik prensiplerini sistemleştirmiştir.","Dolaylı yaklaşım ve esneklik kavramlarını öne çıkarmıştır.","Askeri eğitim doktrinlerini etkilemiştir.","Stratejik düşüncenin evrensel referans metinlerinden birini üretmiştir."]},
-{name:"Tokugawa Ieyasu",info:["Tokugawa Şogunluğu'nu kurarak Japonya'da uzun süreli siyasi istikrar sağlamıştır.","Merkezi feodal düzeni kontrol altına almıştır.","İç barış politikalarıyla ekonomik gelişimi desteklemiştir.","Yönetim hiyerarşisini kurumsallaştırmıştır."]},
-{name:"Meiji İmparatoru",info:["Meiji Restorasyonu ile hızlı modernleşme ve sanayileşme sürecini başlatmıştır.","Askeri ve eğitim reformlarıyla devlet kapasitesini artırmıştır.","Batı teknolojilerinin uyarlanmasını teşvik etmiştir.","Japonya'yı bölgesel güç konumuna taşımıştır."]},
-{name:"Kraliçe I. Elizabeth",info:["Deniz gücünü artırarak İngiltere'nin küresel etkisini genişletmiştir.","İç siyasi dengeyi koruyarak istikrarlı yönetim sağlamıştır.","Kültür ve tiyatroda Altın Çağ'ı desteklemiştir.","Dış politikada denge stratejileri uygulamıştır."]},
-{name:"George Washington",info:["Bağımsızlık Savaşı'nda birleşik komuta sağlayarak zaferi mümkün kılmıştır.","İlk başkan olarak demokratik kurumların teamüllerini oluşturmuştur.","Sivil-asker dengesi ve görev süresi normlarını yerleştirmiştir.","Federal yönetimin meşruiyetini güçlendirmiştir."]},
-{name:"Abraham Lincoln",info:["İç Savaş sırasında Birliği koruyarak devletin dağılmasını önlemiştir.","Köleliğin kaldırılmasına giden süreci hızlandırmıştır.","Merkezi otoriteyi savaş koşullarında etkin kullanmıştır.","Ulusal kimlik ve eşitlik söylemini güçlendirmiştir."]},
-{name:"Nelson Mandela",info:["Apartheid rejiminin sona ermesinde kritik siyasi liderlik göstermiştir.","Uzlaşma ve barış temelli geçiş sürecini yönetmiştir.","Demokratik kurumların kurulmasını desteklemiştir.","Küresel insan hakları sembollerinden biri olmuştur."]},
-{name:"Mahatma Gandhi",info:["Şiddetsiz direniş stratejisiyle kitle mobilizasyonu sağlamıştır.","Hindistan'ın bağımsızlık sürecine yön vermiştir.","Sivil itaatsizlik yöntemlerini küresel hareketlere model yapmıştır.","Ahlaki liderlik vurgusuyla siyaset tarzını etkilemiştir."]}
-  ,{name:"Marie Curie",info:["Radyoaktivite üzerine öncü çalışmalar yapmıştır.","İki farklı bilim dalında Nobel kazanan ilk kişidir.","Bilimsel araştırmada deneysel yöntemi güçlendirmiştir.","Modern fizik ve kimyaya büyük katkı sağlamıştır."]}
 
-,{name:"Charles Darwin",info:["Evrim teorisini doğal seçilimle açıklamıştır.","Biyolojide modern anlayışın temelini atmıştır.","Türlerin Kökeni eseriyle bilim dünyasını etkilemiştir.","Canlıların uyum süreçlerini açıklamıştır."]}
+{name:"Fatih Sultan Mehmet",category:"Osmanlı",info:["İstanbul'u fethetti.","Osmanlı'yı güçlendirdi."]},
+{name:"Yavuz Sultan Selim",category:"Osmanlı",info:["Doğu seferleri yaptı.","Halifelik Osmanlı'ya geçti."]},
+{name:"Kanuni Sultan Süleyman",category:"Osmanlı",info:["Osmanlı en geniş sınırlara ulaştı.","Kanunnameler hazırladı."]},
+{name:"Barbaros Hayreddin Paşa",category:"Osmanlı",info:["Preveze zaferi.","Osmanlı donanmasını güçlendirdi."]},
 
-,{name:"Johannes Gutenberg",info:["Matbaayı geliştirerek bilginin yayılmasını hızlandırmıştır.","Kitap üretimini ucuzlatmıştır.","Rönesans ve Reform'a zemin hazırlamıştır.","Kitle eğitimine katkı sağlamıştır."]}
+{name:"Mustafa Kemal Atatürk",category:"Dünya",info:["Türkiye Cumhuriyeti'ni kurdu.","Reformlar yaptı."]},
+{name:"Napolyon",category:"Dünya",info:["Avrupa siyasetini değiştirdi."]},
+{name:"George Washington",category:"Dünya",info:["ABD'nin ilk başkanı."]},
+{name:"Nelson Mandela",category:"Dünya",info:["Apartheid karşıtı lider."]},
 
-,{name:"Martin Luther",info:["Reform hareketini başlatmıştır.","Kilise otoritesini sorgulamıştır.","İncil'i Almancaya çevirerek halkın erişimini artırmıştır.","Avrupa'da dini yapıyı değiştirmiştir."]}
+{name:"İbn Sina",category:"Bilim",info:["Tıp alanında önemli eserler yazdı."]},
+{name:"Einstein",category:"Bilim",info:["Görelilik teorisi."]},
+{name:"Nikola Tesla",category:"Bilim",info:["Alternatif akım sistemi."]},
+{name:"Marie Curie",category:"Bilim",info:["Radyoaktivite çalışmaları."]},
 
-,{name:"Voltaire",info:["Aydınlanma düşüncesinin önemli figürüdür.","İfade özgürlüğünü savunmuştur.","Din ve devlet ilişkisini eleştirmiştir.","Avrupa düşüncesini etkilemiştir."]}
+{name:"Sokrates",category:"Felsefe",info:["Sorgulama yöntemi."]},
+{name:"Platon",category:"Felsefe",info:["Akademia'yı kurdu."]},
+{name:"Aristoteles",category:"Felsefe",info:["Mantık sistemi."]},
+{name:"Kant",category:"Felsefe",info:["Eleştirel felsefe."]}
 
-,{name:"Rousseau",info:["Toplum sözleşmesi kavramını geliştirmiştir.","Halk egemenliğini savunmuştur.","Modern demokrasi düşüncesini etkilemiştir.","Eğitim felsefesine katkı sağlamıştır."]}
-
-,{name:"Immanuel Kant",info:["Eleştirel felsefenin kurucusudur.","Ahlak felsefesinde ödev kavramını geliştirmiştir.","Bilgi teorisine yön vermiştir.","Modern felsefeyi derinden etkilemiştir."]}
-
-,{name:"Adam Smith",info:["Modern ekonominin kurucularındandır.","Serbest piyasa kavramını açıklamıştır.","Ulusların Zenginliği eserini yazmıştır.","Ekonomik düşünceyi etkilemiştir."]}
-
-,{name:"Karl Marx",info:["Toplumsal sınıf analizleri yapmıştır.","Kapitalizm eleştirisiyle tanınır.","Sosyoloji ve ekonomi düşüncesini etkilemiştir.","Tarihsel materyalizm yaklaşımını geliştirmiştir."]}
-
-,{name:"Sigmund Freud",info:["Psikanalizin kurucusudur.","Bilinçdışı kavramını ortaya koymuştur.","Modern psikolojiyi etkilemiştir.","İnsan davranışını farklı açıdan açıklamıştır."]}
-
-,{name:"Louis Pasteur",info:["Mikrop teorisini geliştirmiştir.","Aşı çalışmalarına öncülük etmiştir.","Pastörizasyon yöntemini bulmuştur.","Modern tıbbı etkilemiştir."]}
-
-,{name:"Alexander Fleming",info:["Penisilini keşfetmiştir.","Antibiyotik çağını başlatmıştır.","Tıp tarihinde dönüm noktası oluşturmuştur.","Enfeksiyon tedavisini değiştirmiştir."]}
-
-,{name:"James Watt",info:["Buhar makinesini geliştirmiştir.","Sanayi Devrimi'ni hızlandırmıştır.","Üretim teknolojisini dönüştürmüştür.","Endüstriyel ilerlemeye katkı sağlamıştır."]}
-
-,{name:"Henry Ford",info:["Seri üretim hattını yaygınlaştırmıştır.","Otomobili kitlelere ulaştırmıştır.","Sanayi üretim modelini değiştirmiştir.","Modern fabrikacılığı etkilemiştir."]}
-
-,{name:"Steve Jobs",info:["Kişisel bilgisayar ve akıllı telefon devriminde rol oynamıştır.","Apple'ı küresel teknoloji markası yapmıştır.","Tasarım odaklı ürün anlayışı getirmiştir.","Dijital kültürü etkilemiştir."]}
-
-,{name:"Bill Gates",info:["Microsoft'u kurmuştur.","Kişisel bilgisayar yazılımlarını yaygınlaştırmıştır.","Teknoloji sektörünü şekillendirmiştir.","Küresel hayır projeleri yürütmüştür."]}
-
-,{name:"Alan Turing",info:["Bilgisayar biliminin temellerini atmıştır.","Yapay zekâ kavramını ortaya koymuştur.","Şifre çözme çalışmalarıyla tanınır.","Modern bilgisayar mantığını geliştirmiştir."]}
-
-,{name:"Grace Hopper",info:["İlk derleyicilerden birini geliştirmiştir.","Yazılım mühendisliğinin öncülerindendir.","Programlama dillerinin gelişimine katkı sağlamıştır.","Bilgisayar biliminde öncü kadın figürdür."]}
-
-,{name:"Hedy Lamarr",info:["Kablosuz iletişim teknolojisine katkı sağlamıştır.","Frekans atlamalı sistem fikrini geliştirmiştir.","Modern Wi-Fi ve Bluetooth'un temelini etkilemiştir.","Bilim ve sanat alanında tanınır."]}
-
-,{name:"Neil Armstrong",info:["Ay'a ayak basan ilk insandır.","Uzay araştırmalarında sembol olmuştur.","NASA görevlerinde yer almıştır.","Uzay çağını temsil eder."]}
 ];
 
 const listDiv = document.getElementById('list');
-function renderList(arr){listDiv.innerHTML='';arr.forEach(p=>{const d=document.createElement('div');d.className='person';d.innerText=p.name;d.onclick=()=>openDetail(p);listDiv.appendChild(d);});}
-function openDetail(p){document.getElementById('detailPage').style.display='block';document.getElementById('detailName').innerText=p.name;const ol=document.getElementById('detailInfo');ol.innerHTML='';p.info.forEach(i=>{const li=document.createElement('li');li.innerText=i;ol.appendChild(li);});}
-function closeDetail(){document.getElementById('detailPage').style.display='none';}
-  let currentCategory = "all";
+let currentCategory = "all";
+
+function renderList(arr){
+  listDiv.innerHTML='';
+  arr.forEach(p=>{
+    const d=document.createElement('div');
+    d.className='person';
+    d.innerText=p.name;
+    d.onclick=()=>openDetail(p);
+    listDiv.appendChild(d);
+  });
+}
+
+function openDetail(p){
+  document.getElementById('detailPage').style.display='block';
+  document.getElementById('detailName').innerText=p.name;
+  const ol=document.getElementById('detailInfo');
+  ol.innerHTML='';
+  p.info.forEach(i=>{
+    const li=document.createElement('li');
+    li.innerText=i;
+    ol.appendChild(li);
+  });
+}
+
+function closeDetail(){
+  document.getElementById('detailPage').style.display='none';
+}
 
 function filterCategory(cat){
   currentCategory = cat;
@@ -243,82 +106,19 @@ function searchPerson(){
 }
 
 function applyFilters(){
-  const val = document.getElementById('searchBox').value.toLowerCase();
+  const val=document.getElementById('searchBox').value.toLowerCase();
+  let result=people;
 
-  let result = people;
-
-  if(currentCategory !== "all"){
-    result = result.filter(p => p.category === currentCategory);
+  if(currentCategory!=="all"){
+    result=result.filter(p=>p.category===currentCategory);
   }
 
-  result = result.filter(p => p.name.toLowerCase().includes(val));
-
+  result=result.filter(p=>p.name.toLowerCase().includes(val));
   renderList(result);
 }
-function searchPerson(){
-  applyFilters();
-}
+
 renderList(people);
+
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

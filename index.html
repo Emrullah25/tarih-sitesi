@@ -87,6 +87,15 @@ li{margin-bottom:10px;line-height:1.6}
 </div>
 
 <input id="searchBox" onkeyup="searchPerson()" placeholder="Kişi ara...">
+
+<div style="padding:15px;text-align:center;background:#111;">
+  <button onclick="filterCategory('all')">Tümü</button>
+  <button onclick="filterCategory('Osmanlı')">Osmanlı</button>
+  <button onclick="filterCategory('Bilim')">Bilim</button>
+  <button onclick="filterCategory('Felsefe')">Felsefe</button>
+  <button onclick="filterCategory('Dünya')">Dünya</button>
+</div>
+
 <div id="list" class="container"></div>
 
 <div style="padding:40px;background:#111;text-align:center;">
@@ -227,6 +236,7 @@ renderList(people);
 </script>
 </body>
 </html>
+
 
 
 
